@@ -3,6 +3,7 @@ using UnityEngine;
 
 
 [RequireComponent(typeof(CharacterController))]//makes it so you don't have to go to 'Add Component' in the Inspector and find it yourself
+[AddComponentMenu("FirstPerson/Player Movement")] // Makes it easy to find this script in our own category called "FirstPerson"
 public class CharacterMovement : MonoBehaviour 
 {
 	[Header("Movement Variables")]
