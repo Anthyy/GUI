@@ -46,13 +46,8 @@ public class CharacterHandler : MonoBehaviour
         //max exp starts at 60
         maxExp = 60;
         //connect the Character Controller to the controller variable
-        controller = this.GetComponent<CharacterController>();
+        controller = this.GetComponent<CharacterController>(); 
     }
-    //set max health to 100
-    //set current health to max
-    //make sure player is alive
-    //max exp starts at 60
-    //connect the Character Controller to the controller variable
     #endregion
     #region Update
     private void Update()
