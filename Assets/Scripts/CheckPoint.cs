@@ -35,7 +35,7 @@ public class CheckPoint : MonoBehaviour
     #region Update
     private void Update()
     {
-        //if our characters health is less than or equal to 0
+        //if our characters health is equal to 0
         if (charH.curHealth == 0)
         {
             //our transform.position is equal to that of the checkpoint
@@ -63,8 +63,3 @@ public class CheckPoint : MonoBehaviour
     }
    #endregion
 }
-
-
-
-
-

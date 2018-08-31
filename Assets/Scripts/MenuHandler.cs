@@ -119,13 +119,23 @@ public class MenuHandler : MonoBehaviour
         if(forward == KeyCode.None)
         {
             Debug.Log("KeyCode:" + e.keyCode);
-            if(!(e.keyCode == backward || e.keyCode == left || e.keyCode == right || e.keyCode == jump || e.keyCode == crouch || e.keyCode == sprint || e.keyCode == interact))
+            if(e.keyCode != KeyCode.None)
             {
-                forward = e.keyCode;
-                holdingKey = KeyCode.None;
-                forwardText.text = forward.ToString();
+                if (!(e.keyCode == backward || e.keyCode == left || e.keyCode == right || e.keyCode == jump || e.keyCode == crouch || e.keyCode == sprint || e.keyCode == interact))
+                {
+                    forward = e.keyCode;
+                    holdingKey = KeyCode.None;
+                    forwardText.text = forward.ToString();
+                }
+                else
+                {
+                    forward = holdingKey;
+                    holdingKey = KeyCode.None;
+                    forwardText.text = forward.ToString();
+
+                }
             }
-        }
+        }   
     }
     public void Forward()
     {
