@@ -751,6 +751,7 @@ GameObject:
   - component: {fileID: 190366149}
   - component: {fileID: 190366148}
   - component: {fileID: 190366147}
+  - component: {fileID: 190366151}
   m_Layer: 0
   m_Name: NPC
   m_TagString: NPC
@@ -825,6 +826,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &190366151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 190366146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4db23a24f1d786f49ac9e635b5c2de2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showDialogue: 0
+  index: 0
+  optionIndex: 2
+  playerMovement: {fileID: 0}
+  camLook: {fileID: 0}
+  charLook: {fileID: 0}
+  npcName: Steve
+  dialogueText:
+  - Hey
+  - Hi
+  - Yo
+  - Bro
+  - Mate
+  scr: {x: 0, y: 0}
 --- !u!1 &214872297
 GameObject:
   m_ObjectHideFlags: 0
@@ -1281,7 +1307,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &358762367
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2196,6 +2222,7 @@ GameObject:
   - component: {fileID: 752517978}
   - component: {fileID: 752517980}
   - component: {fileID: 752517979}
+  - component: {fileID: 752517981}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2263,6 +2290,22 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &752517981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 752517977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4ef54ee82b3a73438064b60c916968b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axis: 2
+  sensitivityX: 10
+  sensitivityY: 10
+  minimumY: -60
+  maximumY: 60
 --- !u!1 &762699165
 GameObject:
   m_ObjectHideFlags: 0
@@ -4444,7 +4487,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1944077485
 BoxCollider:
   m_ObjectHideFlags: 0
