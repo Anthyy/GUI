@@ -20,12 +20,13 @@ public class CharacterHandler : MonoBehaviour
     public float curHealth; // cur = current
     public GUIStyle healthBar;
     #endregion
-    //[Header("Levels and Exp")]
+    [Header("Levels and Exp")]
     #region Level and Exp
-    //players current level
+    //player's current level
     public int level;
     //max and current experience 
     public int maxExp, curExp;
+    public CharacterClass charClass = CharacterClass.Monk;
     #endregion
     [Header("Camera Connection")]
     #region MiniMap
@@ -46,7 +47,7 @@ public class CharacterHandler : MonoBehaviour
         //max exp starts at 60
         maxExp = 60;
         //connect the Character Controller to the controller variable
-        controller = this.GetComponent<CharacterController>(); 
+        controller = this.GetComponent<CharacterController>();
     }
     #endregion
     #region Update
