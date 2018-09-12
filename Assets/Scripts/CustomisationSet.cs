@@ -254,7 +254,7 @@ public class CustomisationSet : MonoBehaviour
         //GUI Box or Lable on the left of the screen with the contence Skin
         GUI.Box(new Rect(0.75f * scrW, scrH + i * (0.5f * scrH), 1f * scrW, 0.5f * scrH), "Skin");
         //GUI button on the left of the screen with the contence >
-        if (GUI.Button(new Rect(1.25f * scrW, scrH + i * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), ">"))
+        if (GUI.Button(new Rect(1.75f * scrW, scrH + i * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), ">"))
         {
             //when pressed the button will run SetTexture and grab the Skin Material and move the texture index in the direction  1
             SetTexture("Skin", 1);
