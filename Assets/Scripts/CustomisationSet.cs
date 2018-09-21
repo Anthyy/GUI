@@ -246,7 +246,7 @@ public class CustomisationSet : MonoBehaviour
         // Set stats
         for(int i = 0; i < stats.Length; i++)
         {
-            PlayerPrefs.SetInt(statArray[i], stats[i]);
+            PlayerPrefs.SetInt(statArray[i], (stats[i] + tempStats[i]));
         }
         // Save to regedit a string called CharacterClass with the data selectedClass[selectedIndex] which is our current class.
         PlayerPrefs.SetString("CharacterClass", selectedClass[selectedIndex]);
