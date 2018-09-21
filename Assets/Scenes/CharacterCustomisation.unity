@@ -748,14 +748,27 @@ MonoBehaviour:
   armourMax: 11
   clothesMax: 11
   charName: Adventurer
-  str: 0
-  dex: 0
-  chr: 0
-  con: 0
-  intel: 0
-  wis: 0
+  statArray:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  stats: 000000000000000000000000000000000000000000000000
+  tempStats: 000000000000000000000000000000000000000000000000
   points: 10
   charClass: 0
+  selectedClass:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  selectedIndex: 0
 --- !u!4 &982111678
 Transform:
   m_ObjectHideFlags: 0

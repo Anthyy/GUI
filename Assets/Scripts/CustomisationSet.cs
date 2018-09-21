@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement; // You will need to change Scenes
 public class CustomisationSet : MonoBehaviour
-{
-
+{  
     #region Variables
     [Header("Texture List")]
     // Texture2D List for skin, hair, mouth, eyes, armour, clothes
@@ -43,6 +42,9 @@ public class CustomisationSet : MonoBehaviour
     #region Start
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         statArray = new string[] { "Strength", "Dexterity", "Constitution", "Wisdom", "Intelligence", "Charisma" };
         selectedClass = new string[] {"Barbarian", "Bard", "Druid", "Monk", "Paladin", "Ranger", "Sorcerer", "Warlock" };
     
@@ -153,20 +155,20 @@ public class CustomisationSet : MonoBehaviour
                 textures = eyes.ToArray();
                 matIndex = 4;
                 break;
-            // Armour is 5
-            case "Armour":
-                index = armourIndex;
-                max = armourMax;
-                textures = armour.ToArray();
-                matIndex = 5;
-                break;
-            // Clothes is 6
+            // Clothes is 5
             case "Clothes":
                 index = clothesIndex;
                 max = clothesMax;
                 textures = clothes.ToArray();
-                matIndex = 6;
+                matIndex = 5;
                 break;
+            // Armour is 6
+            case "Armour":
+                index = armourIndex;
+                max = armourMax;
+                textures = armour.ToArray();
+                matIndex = 6;
+                break;          
         }
         #endregion
 
@@ -230,17 +232,24 @@ public class CustomisationSet : MonoBehaviour
     #endregion
 
     #region Save
-    void Save() // Function called Save this will allow us to save our indexes to PlayerPrefs
+    void Save() // Function called Save. This will allow us to save our indexes to PlayerPrefs
     {
         // SetInt for SkinIndex, HairIndex, MouthIndex, EyesIndex, etc.
         PlayerPrefs.SetInt("SkinIndex", skinIndex);
         PlayerPrefs.SetInt("HairIndex", hairIndex);
         PlayerPrefs.SetInt("MouthIndex", mouthIndex);
         PlayerPrefs.SetInt("EyesIndex", eyesIndex);
-        PlayerPrefs.SetInt("ArmourIndex", armourIndex);
         PlayerPrefs.SetInt("ClothesIndex", clothesIndex);
+        PlayerPrefs.SetInt("ArmourIndex", armourIndex);
         // SetString CharacterName
-        PlayerPrefs.SetString("CharacterName", charName);      
+        PlayerPrefs.SetString("CharacterName", charName);  
+        // Set stats
+        for(int i = 0; i < stats.Length; i++)
+        {
+            PlayerPrefs.SetInt(statArray[i], stats[i]);
+        }
+        // Save to regedit a string called CharacterClass with the data selectedClass[selectedIndex] which is our current class.
+        PlayerPrefs.SetString("CharacterClass", selectedClass[selectedIndex]);
     }
     #endregion
 
@@ -321,23 +330,6 @@ public class CustomisationSet : MonoBehaviour
         // Move down the screen with the int using ++ each grouping of GUI elements are moved using this
         i++;
         #endregion
-        #region Armour
-        if (GUI.Button(new Rect(0.25f * scrW, scrH + i * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "<"))
-        {
-            //when pressed the button will run SetTexture and grab the Armour Material and move the texture index in the direction  -1
-            SetTexture("Armour", -1);
-        }
-        //GUI Box or Label on the left of the screen with the contents "Armour"
-        GUI.Box(new Rect(0.75f * scrW, scrH + i * (0.5f * scrH), 1f * scrW, 0.5f * scrH), "Armour");
-        //GUI button on the left of the screen with the contents ">"
-        if (GUI.Button(new Rect(1.75f * scrW, scrH + i * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), ">"))
-        {
-            // When pressed, the button will run SetTexture and grab the Armour Material and move the texture index in the direction  1
-            SetTexture("Armour", 1);
-        }
-        // Move down the screen with the int using ++ each grouping of GUI elements are moved using this
-        i++;
-        #endregion
         #region Clothes
         if (GUI.Button(new Rect(0.25f * scrW, scrH + i * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "<"))
         {
@@ -355,17 +347,34 @@ public class CustomisationSet : MonoBehaviour
         // Move down the screen with the int using ++ each grouping of GUI elements are moved using this
         i++;
         #endregion
+        #region Armour
+        if (GUI.Button(new Rect(0.25f * scrW, scrH + i * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "<"))
+        {
+            //when pressed the button will run SetTexture and grab the Armour Material and move the texture index in the direction  -1
+            SetTexture("Armour", -1);
+        }
+        //GUI Box or Label on the left of the screen with the contents "Armour"
+        GUI.Box(new Rect(0.75f * scrW, scrH + i * (0.5f * scrH), 1f * scrW, 0.5f * scrH), "Armour");
+        //GUI button on the left of the screen with the contents ">"
+        if (GUI.Button(new Rect(1.75f * scrW, scrH + i * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), ">"))
+        {
+            // When pressed, the button will run SetTexture and grab the Armour Material and move the texture index in the direction  1
+            SetTexture("Armour", 1);
+        }
+        // Move down the screen with the int using ++ each grouping of GUI elements are moved using this
+        i++;
+        #endregion
         #region Random Reset
         // Create 2 buttons - one Random and one Reset
         // Random will feed a random amount to the direction 
-        if(GUI.Button(new Rect(0.25f* scrW, scrH +i * (0.5f*scrH), scrW, 0.5f*scrH), "Random"))
+        if (GUI.Button(new Rect(0.25f* scrW, scrH +i * (0.5f*scrH), scrW, 0.5f*scrH), "Random"))
         {
             SetTexture("Skin", Random.Range(0, skinMax - 1));
             SetTexture("Hair", Random.Range(0, hairMax - 1));
             SetTexture("Mouth", Random.Range(0, mouthMax - 1));
             SetTexture("Eyes", Random.Range(0, eyesMax - 1));
-            SetTexture("Armour", Random.Range(0, armourMax - 1));
             SetTexture("Clothes", Random.Range(0, clothesMax - 1));
+            SetTexture("Armour", Random.Range(0, armourMax - 1));
         }
         // Reset will set all to 0 both use SetTexture
         if (GUI.Button(new Rect(1.25f * scrW, scrH + i * (0.5f * scrH), scrW, 0.5f * scrH), "Reset"))
@@ -374,8 +383,8 @@ public class CustomisationSet : MonoBehaviour
             SetTexture("Hair", hairIndex = 0);
             SetTexture("Mouth", mouthIndex = 0);
             SetTexture("Eyes", eyesIndex = 0);
-            SetTexture("Armour", armourIndex = 0);
             SetTexture("Clothes", clothesIndex = 0);
+            SetTexture("Armour", armourIndex = 0);
         }
         // Move down the screen with the int using ++ each grouping of GUI elements are moved using this
         i++;
@@ -395,7 +404,30 @@ public class CustomisationSet : MonoBehaviour
         i++;
         #endregion     
         #region Character Customisation GUI Loop
+        i = 0;
+        GUI.Box(new Rect(3.75f * scrW, scrH + i * (0.5f * scrH), 2 * scrW, 0.5f * scrH), "Class");
+        i++;
+        GUI.Box(new Rect(3.75f * scrW, scrH + i * (0.5f * scrH), 2 * scrW, 0.5f * scrH), selectedClass[selectedIndex]);
 
+        if (GUI.Button(new Rect(3.25f * scrW, scrH + i * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "<"))
+        {
+            selectedIndex--;
+            if (selectedIndex < 0)
+            {
+                selectedIndex = selectedClass.Length - 1;
+            }
+            ChooseClass(selectedIndex);
+        }
+        if (GUI.Button(new Rect(5.75f * scrW, scrH + i * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), ">"))
+        {
+            selectedIndex++;
+            if (selectedIndex > selectedClass.Length - 1)
+            {
+                selectedIndex = 0;
+            }
+            ChooseClass(selectedIndex);
+
+        }
         GUI.Box(new Rect(3.75f * scrW, 1f * scrH, 2f * scrW, 0.5f * scrH), "Class");
         GUI.Box(new Rect(3.75f * scrW, 2f * scrH, 2f * scrW, 0.5f * scrH), "Points:" + points); 
         for (int s = 0; s < 6; s++)
