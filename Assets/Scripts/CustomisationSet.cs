@@ -250,6 +250,7 @@ public class CustomisationSet : MonoBehaviour
         }
         // Save to regedit a string called CharacterClass with the data selectedClass[selectedIndex] which is our current class.
         PlayerPrefs.SetString("CharacterClass", selectedClass[selectedIndex]);
+       // PlayerPrefs.SetString("CharacterClass", charClass.ToString());
     }
     #endregion
 
@@ -540,7 +541,7 @@ public class CustomisationSet : MonoBehaviour
                 break;
         }
     }
-}    
+}
 public enum CharacterClass
 {
     Barbarian,

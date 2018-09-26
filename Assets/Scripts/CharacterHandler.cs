@@ -26,7 +26,9 @@ public class CharacterHandler : MonoBehaviour
     public int level;
     //max and current experience 
     public int maxExp, curExp;
-    public CharacterClass charClass = CharacterClass.Monk;
+    public string[] statArray = new string[6];
+    public int[] stats = new int[6];
+    public CharacterClass charClass; // Referencing the enum in CustomisationSet, since they can be inside or outside a script. They're special,apparently.
     #endregion
     [Header("Camera Connection")]
     #region MiniMap
@@ -38,6 +40,14 @@ public class CharacterHandler : MonoBehaviour
 
     private void Start()
     {
+        // Loading in stats (2 ways)
+        // str = PlayerPrefs.GetInt("Strength"); // Way 1: listing individual stats
+        statArray = new string[] { "Strength", "Dexterity", "Constitution", "Wisdom", "Intelligence", "Charisma" }; // Way 2: Fill the array with stat names from CustomisationSet script
+        for (int i = 0; i < stats.Length; i++) 
+        {
+            stats[i] = PlayerPrefs.GetInt(statArray[i]);
+        }
+        charClass = (CharacterClass)System.Enum.Parse(typeof(CharacterClass), PlayerPrefs.GetString("CharacterClass", "Barbarian"));
         //set max health to 100
         maxHealth = 100f;
         //set current health to max
@@ -47,7 +57,7 @@ public class CharacterHandler : MonoBehaviour
         //max exp starts at 60
         maxExp = 60;
         //connect the Character Controller to the controller variable
-        controller = this.GetComponent<CharacterController>();
+        controller = this.GetComponent<CharacterController>();            
     }
     #endregion
     #region Update
