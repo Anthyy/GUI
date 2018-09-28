@@ -132,7 +132,6 @@ public class MenuHandler : MonoBehaviour
                     forward = holdingKey;
                     holdingKey = KeyCode.None;
                     forwardText.text = forward.ToString();
-
                 }
             }
         }   

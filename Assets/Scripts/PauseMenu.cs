@@ -2,35 +2,46 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PauseMenu : MonoBehaviour {
+public class PauseMenu : MonoBehaviour
+{
 
-    public bool isPaused;
+    public bool isPaused = false;
     public GameObject pauseMenu;
-    void Start()
+
+    /*void Start()
     {
         Time.timeScale = 1; // Game is running in realtime
         pauseMenu.SetActive(false);
         isPaused = false;
-    }
+    }*/
 
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (isPaused)
+            // == checking
+            // = setting
+            if (isPaused == false)
             {
-                Time.timeScale = 1; // Game is running in realtime
-                pauseMenu.SetActive(false);
-                isPaused = false;
-            }
-            else
+                ActivateMenu();
+            }           
+            else if (isPaused) // Or isPaused == true;
             {
-                Time.timeScale = 0; // Game is frozen
-                pauseMenu.SetActive(true);
-
-                isPaused = true;
+                DeactivateMenu();
             }
         }
     }
+
+    void ActivateMenu()
+    {
+        pauseMenu.SetActive(true);
+        isPaused = true;
+    }
+    void DeactivateMenu()
+    {
+        pauseMenu.SetActive(false);
+        isPaused = false;
+    }
 }
+
