@@ -17,7 +17,7 @@ public class CheckPoint : MonoBehaviour
     private void Start()
     {
         //the character handler is the component attached to our player
-        charH = GetComponent<CharacterHandler>();
+        charH = this.GetComponent<CharacterHandler>();
         #region Check if we have Key
         //if we have a save key called SpawnPoint
         if (PlayerPrefs.HasKey("SpawnPoint"))
@@ -33,15 +33,15 @@ public class CheckPoint : MonoBehaviour
 
     #endregion
     #region Update
-    private void Update()
+    private void LateUpdate()
     {
         //if our characters health is equal to 0
-        if (charH.curHealth == 0)
+        if (CharacterHandler.curHealth == 0)
         {
             //our transform.position is equal to that of the checkpoint
             transform.position = curCheckpoint.transform.position;
             //our characters health is equal to full health
-            charH.curHealth = charH.maxHealth;
+            CharacterHandler.curHealth = CharacterHandler.maxHealth;
             //character is alive
             charH.isAlive = true;
             //characters controller is active

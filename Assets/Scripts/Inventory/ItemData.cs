@@ -235,7 +235,7 @@ public class ItemData
             Amount = amount,
             Heal = heal,
             Type = type,
-            Icon = Resources.Load("Icons/" + icon) as Texture2D,
+            Icon = Resources.Load("Icons/" + icon) as Texture2D, // Whenever you're dealing with Resource.Load, you need to make sure paths are clear. So "Icons" needs to be the name of the folder.
             MeshName = mesh
         };   
         return temp;

@@ -68,6 +68,11 @@ public class Interact : MonoBehaviour
                 if(hitInfo.collider.CompareTag("Item"))
                 {
                     Debug.Log("Pick up Item");
+                    ItemHandler handler = hitInfo.transform.GetComponent<ItemHandler>();
+                    if (handler != null)
+                    {
+                        handler.OnCollection();
+                    }
                 }   
                 #endregion
 

@@ -32,13 +32,12 @@ public class TimerClock : MonoBehaviour
             timer = 0;
         }
     }
-    private void OnGUI()
-    {
-        // pretty much just like an extra Update except it manages events and GUI elements
+    private void OnGUI() // pretty much just like an extra Update except it manages events and GUI elements
+    {       
         int mins = Mathf.FloorToInt(timer / 60);
         int seconds = Mathf.FloorToInt(timer - mins * 60);
         clockTime = string.Format("{0:0}:{1:00}", mins, seconds);
-        GUI.Label(new Rect(10,10,250,100), clockTime, text);
-        GUI.Label(new Rect(10,200,250,100), time.Hour + ":" + time.Minute + ":" + time.Second, text);
+        GUI.Label(new Rect(10,10,250,100), clockTime);
+        GUI.Label(new Rect(10,200,250,100), time.Hour + ":" + time.Minute + ":" + time.Second, text); // "text" is the style it's written in. You can also put "text" in the above Label too (:
     }
 }

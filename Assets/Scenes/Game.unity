@@ -3873,10 +3873,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19631a321d003b34a9b52db18ccce108, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  showInv: 0
-  money: 0
   scr: {x: 0, y: 0}
   scrollPos: {x: 0, y: 0}
+  sortType: All
 --- !u!114 &1673938478 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114028131018493184, guid: 0df1275795c7742499ccd311ba816f21,
@@ -4072,7 +4071,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f702e00b4e32b1242908f7158a9b7847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPaused: 0
   pauseMenu: {fileID: 673485656}
 --- !u!1 &1865584921
 GameObject:
@@ -4220,13 +4218,14 @@ GameObject:
   - component: {fileID: 1944077487}
   - component: {fileID: 1944077486}
   - component: {fileID: 1944077485}
+  - component: {fileID: 1944077489}
   m_Layer: 0
-  m_Name: Item
+  m_Name: Item (Test Pickup)
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &1944077485
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4280,7 +4279,7 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1944077484}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!4 &1944077488
 Transform:
   m_ObjectHideFlags: 0
@@ -4288,12 +4287,26 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1944077484}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 29.53068, y: 1.4636, z: 21.15646}
+  m_LocalPosition: {x: 29.53068, y: 1.4636, z: 25.02}
   m_LocalScale: {x: 1.4512, y: 1.4512, z: 1.4512}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1944077489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1944077484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 704356d9060772f40ae812ef7e0097b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 0
+  itemType: 0
+  amount: 1
 --- !u!1 &1980331590
 GameObject:
   m_ObjectHideFlags: 0
