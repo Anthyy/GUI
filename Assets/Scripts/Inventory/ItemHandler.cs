@@ -49,6 +49,7 @@ public class ItemHandler : MonoBehaviour
         {
             Inventory.inv.Add(ItemData.CreateItem(itemId)); // pick up and add to inventory
         }
+        DragAndDropInventory.AddItem(itemId);
         Destroy(gameObject); // Remove the object this script is attached to from the world
     }
 }
